@@ -1,0 +1,13 @@
+name: Create virtualenv
+on:
+  - push
+jobs:
+  Create-Virtualenv:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: apt install python3 python3-pip
+      - run: pip3 install virtualenv
+      - run: virtualenv -p python3 test
+      - run: |
+          source test/bin/activate
+          pip3 install -r requirements.txt
